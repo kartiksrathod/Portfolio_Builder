@@ -63,9 +63,9 @@ const Builder = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       {/* Header */}
-      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+      <header className="border-b border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -73,26 +73,35 @@ const Builder = () => {
                 variant="ghost" 
                 size="sm"
                 onClick={() => navigate('/')}
-                className="text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 <span className="hidden sm:inline">Back</span>
               </Button>
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-slate-900 dark:bg-blue-600 rounded-lg flex items-center justify-center transition-colors">
                   <FileText className="w-5 h-5 text-white" />
                 </div>
-                <h1 className="text-xl font-bold text-slate-900 hidden md:block">Portfolio Builder</h1>
+                <h1 className="text-xl font-bold text-slate-900 dark:text-white hidden md:block">Portfolio Builder</h1>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <SaveIndicator isSaving={isSaving} lastSaved={lastSaved} />
-              <div className="hidden sm:block w-px h-6 bg-slate-300"></div>
+              <div className="hidden sm:block w-px h-6 bg-slate-300 dark:bg-slate-600"></div>
+              <Button 
+                variant="ghost"
+                size="icon"
+                onClick={toggleTheme}
+                className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                aria-label="Toggle theme"
+              >
+                {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </Button>
               <Button 
                 size="sm"
                 onClick={handleExport}
                 disabled={isExporting}
-                className="bg-blue-600 hover:bg-blue-700"
+                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
               >
                 <Download className="w-4 h-4 sm:mr-2" />
                 <span className="hidden sm:inline">{isExporting ? 'Exporting...' : 'Export PDF'}</span>
