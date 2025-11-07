@@ -91,10 +91,11 @@ const Builder = () => {
               <Button 
                 size="sm"
                 onClick={handleExport}
+                disabled={isExporting}
                 className="bg-blue-600 hover:bg-blue-700"
               >
                 <Download className="w-4 h-4 mr-2" />
-                Export PDF
+                {isExporting ? 'Exporting...' : 'Export PDF'}
               </Button>
             </div>
           </div>
