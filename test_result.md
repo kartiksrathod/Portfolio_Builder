@@ -394,6 +394,66 @@ frontend:
         agent: "main"
         comment: "Added maximize/minimize functionality to Live Preview in Builder page. Features: Maximize button (icon) in Live Preview header to open fullscreen modal, Fullscreen modal with dark overlay showing complete portfolio preview, Close (X) button to minimize and return to split view, Download PDF button available in fullscreen header, Save indicator visible in fullscreen header, Template selector works in fullscreen view, Real-time updates - preview updates immediately as user edits in forms. User can toggle between split view (forms + preview) and fullscreen preview view seamlessly. Ready for testing to verify: maximize opens fullscreen, minimize closes fullscreen, PDF export works from fullscreen, template switching works in fullscreen, live updates reflect in fullscreen."
 
+  - task: "Professional Photo Upload with Cropping Tool"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/forms/PhotoUploadForm.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Created PhotoUploadForm with react-easy-crop integration. Features: File upload with accept image/*, Image cropper modal with zoom slider (1x-3x), Round crop shape, Base64 encoding for localStorage storage, 5MB file size limit with validation, Preview thumbnail with remove button, Photo displays in all 4 templates (Minimal, Modern, Professional, Creative). Integrated into FormSection as 'Photo' tab. Ready for testing: upload image, crop with zoom, save, verify photo appears in templates, remove photo, test file size limit."
+
+  - task: "Custom Color Scheme Picker for Templates"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/forms/ColorSchemeForm.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Created ColorSchemeForm with preset themes and custom picker. Features: 6 preset professional themes (Classic Blue, Professional Purple, Modern Teal, Elegant Navy, Bold Red, Fresh Green), Each theme has primary/secondary/accent colors, Active theme indicator with checkmark, Custom color picker mode with color input + hex text input, Real-time preview showing current colors, Apply custom colors button, Color scheme stored in PortfolioContext. Note: Color scheme is stored but templates need manual color application (future enhancement). Integrated into FormSection as 'Colors' tab. Ready for testing: select preset themes, create custom colors, verify color scheme saves, check preview display."
+
+  - task: "QR Code Generation for Portfolio Sharing"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/QRCodeGenerator.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Created QRCodeGenerator modal component using qrcode.react. Features: Modal dialog accessible via QR icon button in Builder header, Two QR code modes: vCard (generates contact card with name/email/phone/location/bio) and Portfolio URL (links to user-provided URL), QR code size 200x200 with high error correction, Download QR code as PNG button, Close button, Informational tip about printing on business cards. QR button added to Builder header between theme toggle and export PDF. Ready for testing: open QR modal, switch between vCard/URL modes, enter portfolio URL, download QR code, scan QR code with phone to verify vCard import."
+
+  - task: "Professional Print-Friendly CSS Styling"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/print.css"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Created comprehensive print.css with @media print rules. Features: A4 page size with proper margins (1.5cm sides, 2cm bottom), Hide buttons/navigation/header/footer, Force white backgrounds and black text for readability, Page break controls (avoid breaks inside headings, lists, sections), Optimized text sizing (11pt body, proper heading hierarchy), Remove animations/shadows/rounded corners, Inline link URLs after links (except # anchors), Profile photo optimization (120px circle), Skill bars with borders, Professional spacing and typography, Dark mode classes overridden for print. Imported in index.js. Ready for testing: use browser Print Preview (Cmd/Ctrl+P), verify clean layout, check page breaks, test with all 4 templates."
+
+  - task: "Certifications & Awards Section"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/forms/CertificationsForm.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Created CertificationsForm for managing certifications and awards. Features: Dynamic form with Add/Remove functionality, Fields per certification: name (required), issuer (required), date, credential ID, URL, description, Empty state with icon and add button, Each certification card numbered, Delete button for each entry, Integrated into all 4 templates (Minimal, Modern, Professional, Creative) with proper styling, Added to PortfolioContext as certifications array, Integrated into FormSection as 'Certifications' tab. FormSection now has 9 tabs total. Ready for testing: add certifications, fill all fields, remove certifications, verify display in all templates, test empty state, check localStorage persistence."
+
 metadata:
   created_by: "main_agent"
   version: "1.0"
