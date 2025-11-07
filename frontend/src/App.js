@@ -4,6 +4,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { Toaster } from './components/ui/toaster';
 import Home from './pages/Home';
 import Builder from './pages/Builder';
+import TemplatesGallery from './pages/TemplatesGallery';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/builder" element={<Builder />} />
+              <Route path="/templates" element={<TemplatesGallery />} />
             </Routes>
           </BrowserRouter>
           <Toaster />
