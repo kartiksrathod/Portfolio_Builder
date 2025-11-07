@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
 import MinimalTemplate from './templates/MinimalTemplate';
 import ModernTemplate from './templates/ModernTemplate';
 import ProfessionalTemplate from './templates/ProfessionalTemplate';
 import { Button } from './ui/button';
 
-const Preview = () => {
+const Preview = React.memo(() => {
   const { portfolioData, selectedTemplate, setSelectedTemplate } = usePortfolio();
 
-  const templates = [
+  const templates = useMemo(() => [
     { id: 'minimal', name: 'Minimal', component: MinimalTemplate },
     { id: 'modern', name: 'Modern', component: ModernTemplate },
     { id: 'professional', name: 'Professional', component: ProfessionalTemplate }
-  ];
+  ], []);
 
-  const SelectedTemplateComponent = templates.find(t => t.id === selectedTemplate)?.component || MinimalTemplate;
+  const SelectedTemplateComponent = useMemo(() => 
+    templates.find(t => t.id === selectedTemplate)?.component || MinimalTemplate,
+    [selectedTemplate, templates]
+  );
 
   return (
     <div className="space-y-4">
