@@ -107,8 +107,12 @@ const Home = () => {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <div key={index} className="text-center space-y-4 p-6 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-2xl transition-colors">
+              <div 
+                key={index} 
+                className="text-center space-y-4 p-6 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-300 card-hover animate-fade-in"
+                style={{animationDelay: `${index * 0.1}s`}}
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/50 dark:to-blue-800/30 rounded-2xl transition-all duration-300 hover:scale-110 hover:rotate-3">
                   <Icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                 </div>
                 <h4 className="text-xl font-semibold text-slate-900 dark:text-white">{feature.title}</h4>
