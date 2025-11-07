@@ -19,7 +19,7 @@ const Builder = () => {
   // Auto-save functionality
   const { isSaving, lastSaved } = useAutoSave(portfolioData, savePortfolio, 2000);
 
-  const handleSave = () => {
+  const handleManualSave = () => {
     const success = savePortfolio();
     if (success) {
       toast({
