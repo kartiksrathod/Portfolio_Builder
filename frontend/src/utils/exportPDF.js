@@ -33,7 +33,25 @@ export const exportToPDF = async (
       allowTaint: false,
       // Optimize rendering
       windowWidth: element.scrollWidth,
-      windowHeight: element.scrollHeight
+      windowHeight: element.scrollHeight,
+      // Fix gradient rendering issues by ensuring elements have proper dimensions
+      onclone: (clonedDoc) => {
+        // Find all gradient elements and ensure they have minimum width
+        const gradientElements = clonedDoc.querySelectorAll('[class*="gradient"]');
+        gradientElements.forEach(el => {
+          const computedStyle = window.getComputedStyle(el);
+          const width = parseFloat(computedStyle.width);
+          const height = parseFloat(computedStyle.height);
+          
+          // Ensure minimum dimensions to prevent zero-width/height gradient errors
+          if (width === 0 || isNaN(width)) {
+            el.style.minWidth = '1px';
+          }
+          if (height === 0 || isNaN(height)) {
+            el.style.minHeight = '1px';
+          }
+        });
+      }
     });
 
     if (onProgress) onProgress(50);
