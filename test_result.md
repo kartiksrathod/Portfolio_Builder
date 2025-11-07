@@ -380,7 +380,19 @@ frontend:
     status_history:
       - working: "NA"
         agent: "main"
-        comment: "Implemented comprehensive Templates Gallery page accessible via 'View Templates' button. Features: 2x2 grid layout showing all 4 templates with scaled previews (50%), Fullscreen modal for viewing templates in detail with sample data, PDF export functionality using user's actual portfolio data (not sample), Apply Template button to set active template, Active template indicator with green badge. Includes smooth animations, hover effects, and dark mode support. Navigation: Home -> Templates Gallery, with 'Go to Builder' button in header. Ready for testing to verify: template previews display correctly, fullscreen modal works, PDF export generates correct files with user data, apply template functionality updates builder template selection."
+        comment: "Implemented comprehensive Templates Gallery page accessible via 'View Templates' button. Features: 2x2 grid layout showing all 4 templates with scaled previews (28% scale for proper fit), Fullscreen modal for viewing templates in detail with sample data, PDF export functionality using user's actual portfolio data (not sample), Apply Template button to set active template, Active template indicator with green badge. Includes smooth animations, hover effects, and dark mode support. Navigation: Home -> Templates Gallery, with 'Go to Builder' button in header. Template previews now properly fitted within preview cards."
+
+  - task: "Builder Live Preview Maximize/Minimize Feature"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/Builder.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Added maximize/minimize functionality to Live Preview in Builder page. Features: Maximize button (icon) in Live Preview header to open fullscreen modal, Fullscreen modal with dark overlay showing complete portfolio preview, Close (X) button to minimize and return to split view, Download PDF button available in fullscreen header, Save indicator visible in fullscreen header, Template selector works in fullscreen view, Real-time updates - preview updates immediately as user edits in forms. User can toggle between split view (forms + preview) and fullscreen preview view seamlessly. Ready for testing to verify: maximize opens fullscreen, minimize closes fullscreen, PDF export works from fullscreen, template switching works in fullscreen, live updates reflect in fullscreen."
 
 metadata:
   created_by: "main_agent"
