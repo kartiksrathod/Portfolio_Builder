@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { usePortfolio } from '../context/PortfolioContext';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from '../components/ui/button';
-import { FileText, Download, ArrowLeft, Eye, EyeOff, Moon, Sun, Maximize2, Minimize2, X } from 'lucide-react';
+import { FileText, Download, ArrowLeft, Eye, EyeOff, Moon, Sun, Maximize2, Minimize2, X, QrCode } from 'lucide-react';
 import FormSection from '../components/FormSection';
 import Preview from '../components/Preview';
 import SaveIndicator from '../components/SaveIndicator';
+import QRCodeGenerator from '../components/QRCodeGenerator';
 import { toast } from '../hooks/use-toast';
 import { exportToPDF } from '../utils/exportPDF';
 import useAutoSave from '../hooks/useAutoSave';
@@ -18,6 +19,7 @@ const Builder = () => {
   const [showPreview, setShowPreview] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [isPreviewMaximized, setIsPreviewMaximized] = useState(false);
+  const [showQRCode, setShowQRCode] = useState(false);
   
   // Auto-save functionality
   const { isSaving, lastSaved } = useAutoSave(portfolioData, savePortfolio, 2000);
