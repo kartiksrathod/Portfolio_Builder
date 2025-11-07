@@ -116,19 +116,20 @@ const Builder = () => {
 
           {/* Preview Section */}
           <div className="space-y-6">
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 sticky top-24">
+            <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 lg:sticky lg:top-24 animate-fade-in">
               <div className="mb-6 flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-slate-900">Live Preview</h2>
                 <Button 
                   variant="outline" 
                   size="sm"
                   onClick={() => setShowPreview(!showPreview)}
-                  className="lg:hidden"
+                  className="lg:hidden border-slate-300"
                 >
-                  {showPreview ? 'Hide' : 'Show'} Preview
+                  {showPreview ? <EyeOff className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
+                  {showPreview ? 'Hide' : 'Show'}
                 </Button>
               </div>
-              <div className={`${showPreview ? 'block' : 'hidden lg:block'}`}>
+              <div className={`${showPreview ? 'block' : 'hidden lg:block'} transition-all`}>
                 <Preview />
               </div>
             </div>
