@@ -63,7 +63,7 @@ const Builder = () => {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <header className="border-b border-slate-200 bg-white sticky top-0 z-50">
+      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -71,36 +71,29 @@ const Builder = () => {
                 variant="ghost" 
                 size="sm"
                 onClick={() => navigate('/')}
-                className="text-slate-600 hover:text-slate-900"
+                className="text-slate-600 hover:text-slate-900 hover:bg-slate-100"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Back
+                <span className="hidden sm:inline">Back</span>
               </Button>
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
                   <FileText className="w-5 h-5 text-white" />
                 </div>
-                <h1 className="text-xl font-bold text-slate-900">Portfolio Builder</h1>
+                <h1 className="text-xl font-bold text-slate-900 hidden md:block">Portfolio Builder</h1>
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <Button 
-                variant="outline" 
-                size="sm"
-                onClick={handleSave}
-                className="border-slate-300"
-              >
-                <Save className="w-4 h-4 mr-2" />
-                Save
-              </Button>
+            <div className="flex items-center gap-3">
+              <SaveIndicator isSaving={isSaving} lastSaved={lastSaved} />
+              <div className="hidden sm:block w-px h-6 bg-slate-300"></div>
               <Button 
                 size="sm"
                 onClick={handleExport}
                 disabled={isExporting}
                 className="bg-blue-600 hover:bg-blue-700"
               >
-                <Download className="w-4 h-4 mr-2" />
-                {isExporting ? 'Exporting...' : 'Export PDF'}
+                <Download className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">{isExporting ? 'Exporting...' : 'Export PDF'}</span>
               </Button>
             </div>
           </div>
