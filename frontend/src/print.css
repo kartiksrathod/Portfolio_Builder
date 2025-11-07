@@ -1,0 +1,356 @@
+/* Professional Print-Friendly CSS Styles */
+
+@media print {
+  /* Reset and base styles */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Hide unnecessary elements */
+  header,
+  nav,
+  .no-print,
+  button,
+  [class*="button"],
+  [class*="btn"],
+  .sticky,
+  .fixed,
+  [role="navigation"],
+  [class*="sidebar"],
+  [class*="menu"] {
+    display: none !important;
+  }
+
+  /* Show only the preview/portfolio content */
+  .print-content,
+  [id*="portfolio-preview"],
+  [id*="preview"],
+  [class*="preview"] {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* Page setup */
+  @page {
+    size: A4;
+    margin: 1.5cm 1.5cm 2cm 1.5cm;
+  }
+
+  /* Prevent page breaks inside important elements */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    font-weight: 600;
+    color: #000 !important;
+  }
+
+  p, li, blockquote {
+    page-break-inside: avoid;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Section handling */
+  section,
+  article,
+  .section,
+  [class*="section"] {
+    page-break-inside: avoid;
+    margin-bottom: 1.5em;
+  }
+
+  /* Lists */
+  ul, ol {
+    page-break-before: avoid;
+    page-break-inside: avoid;
+  }
+
+  li {
+    page-break-inside: avoid;
+  }
+
+  /* Remove dark backgrounds and adjust colors for print */
+  div, section, article, main {
+    background: white !important;
+    background-color: white !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border-color: #ccc !important;
+  }
+
+  /* Text colors for readability */
+  p, span, div, li, td, th, label {
+    color: #333 !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666 !important;
+  }
+
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  /* Images */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Profile photos */
+  img[alt*="Profile"],
+  img[alt*="profile"],
+  img[class*="avatar"],
+  img[class*="photo"] {
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 50%;
+    border: 3px solid #333 !important;
+  }
+
+  /* Tables */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    page-break-inside: avoid;
+  }
+
+  /* Skill bars and progress indicators */
+  [class*="skill-bar"],
+  [class*="progress"] {
+    border: 1px solid #ccc !important;
+    background: white !important;
+  }
+
+  [class*="skill-bar"] > div,
+  [class*="progress"] > div {
+    background: #666 !important;
+  }
+
+  /* Cards and containers */
+  [class*="card"],
+  [class*="container"],
+  [class*="box"] {
+    border: 1px solid #ddd !important;
+    background: white !important;
+    box-shadow: none !important;
+    margin-bottom: 1em;
+  }
+
+  /* Headings styling */
+  h1 {
+    font-size: 28pt;
+    margin-top: 0;
+    margin-bottom: 12pt;
+    border-bottom: 2px solid #333;
+    padding-bottom: 8pt;
+  }
+
+  h2 {
+    font-size: 20pt;
+    margin-top: 16pt;
+    margin-bottom: 10pt;
+    border-bottom: 1px solid #666;
+    padding-bottom: 4pt;
+  }
+
+  h3 {
+    font-size: 16pt;
+    margin-top: 12pt;
+    margin-bottom: 8pt;
+  }
+
+  h4 {
+    font-size: 14pt;
+    margin-top: 10pt;
+    margin-bottom: 6pt;
+  }
+
+  /* Remove shadows and rounded corners */
+  * {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    text-shadow: none !important;
+  }
+
+  /* Optimize text for print */
+  body {
+    font-size: 11pt;
+    line-height: 1.5;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  /* Icons - hide or replace with text */
+  svg, 
+  [class*="icon"],
+  i[class*="icon"] {
+    display: none !important;
+  }
+
+  /* Contact information */
+  [class*="contact"],
+  [class*="social"] {
+    display: block !important;
+  }
+
+  [class*="contact"] a,
+  [class*="social"] a {
+    display: inline-block;
+    margin-right: 1em;
+  }
+
+  /* Grid layouts */
+  [class*="grid"] {
+    display: block !important;
+  }
+
+  [class*="col"] {
+    width: 100% !important;
+    float: none !important;
+    margin-bottom: 1em;
+  }
+
+  /* Experience, Education, Projects sections */
+  [class*="experience-item"],
+  [class*="education-item"],
+  [class*="project-item"],
+  [class*="certification-item"] {
+    margin-bottom: 1.5em;
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+
+  /* Skills grid */
+  [class*="skills"] {
+    display: block !important;
+  }
+
+  [class*="skill-item"] {
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  /* Footer */
+  footer {
+    display: block !important;
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #999;
+    font-size: 9pt;
+    color: #666 !important;
+  }
+
+  /* Page numbers */
+  @page {
+    @bottom-right {
+      content: "Page " counter(page) " of " counter(pages);
+    }
+  }
+
+  /* Professional spacing */
+  .print-section {
+    margin-bottom: 1.5em;
+  }
+
+  /* Ensure dark mode classes don't affect print */
+  .dark,
+  [class*="dark:"] {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Remove animations and transitions */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Certification badges */
+  [class*="badge"],
+  [class*="tag"] {
+    border: 1px solid #999 !important;
+    background: white !important;
+    color: #333 !important;
+    padding: 2px 6px;
+    display: inline-block;
+    margin: 2px;
+  }
+
+  /* Two-column layout for contact info */
+  .print-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+  }
+
+  /* Professional header */
+  .print-header {
+    text-align: center;
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    border-bottom: 3px solid #333;
+  }
+
+  /* Compact spacing for multi-page portfolios */
+  .compact-print h2 {
+    margin-top: 8pt;
+    margin-bottom: 6pt;
+  }
+
+  .compact-print p {
+    margin-bottom: 4pt;
+  }
+
+  /* QR Code for print */
+  .print-qr-code {
+    position: absolute;
+    top: 1cm;
+    right: 1cm;
+    width: 2cm;
+    height: 2cm;
+  }
+}
+
+/* Print button styling (visible on screen, hidden in print) */
+@media screen {
+  .print-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+}
+
+@media print {
+  .print-button {
+    display: none !important;
+  }
+}
