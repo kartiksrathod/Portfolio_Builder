@@ -191,4 +191,8 @@ const ProfessionalTemplate = React.memo(({ data }) => {
       </div>
     </div>
   );
-});\n\nProfessionalTemplate.displayName = 'ProfessionalTemplate';\n\nexport default ProfessionalTemplate;
+});
+
+ProfessionalTemplate.displayName = 'ProfessionalTemplate';
+
+export default ProfessionalTemplate;
