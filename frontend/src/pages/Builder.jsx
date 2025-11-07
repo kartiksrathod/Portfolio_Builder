@@ -2,17 +2,22 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { usePortfolio } from '../context/PortfolioContext';
 import { Button } from '../components/ui/button';
-import { FileText, Save, Download, ArrowLeft } from 'lucide-react';
+import { FileText, Download, ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import FormSection from '../components/FormSection';
 import Preview from '../components/Preview';
+import SaveIndicator from '../components/SaveIndicator';
 import { toast } from '../hooks/use-toast';
 import { exportToPDF } from '../utils/exportPDF';
+import useAutoSave from '../hooks/useAutoSave';
 
 const Builder = () => {
   const navigate = useNavigate();
-  const { savePortfolio } = usePortfolio();
+  const { savePortfolio, portfolioData } = usePortfolio();
   const [showPreview, setShowPreview] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
+  
+  // Auto-save functionality
+  const { isSaving, lastSaved } = useAutoSave(portfolioData, savePortfolio, 2000);
 
   const handleSave = () => {
     const success = savePortfolio();
