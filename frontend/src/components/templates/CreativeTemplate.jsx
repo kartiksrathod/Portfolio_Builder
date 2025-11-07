@@ -2,7 +2,7 @@ import React from 'react';
 import { Mail, Phone, MapPin, ExternalLink, Github, Linkedin, Twitter, Globe, Briefcase, GraduationCap } from 'lucide-react';
 
 const CreativeTemplate = React.memo(({ data }) => {
-  const { personalInfo, experience, education, skills, projects, contact } = data;
+  const { personalInfo, experience, education, skills, projects, contact, certifications = [] } = data;
 
   return (
     <div className="bg-gradient-to-br from-white via-blue-50 to-purple-50 min-h-full p-8" id="portfolio-preview">
@@ -11,11 +11,19 @@ const CreativeTemplate = React.memo(({ data }) => {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-10"></div>
         <div className="relative p-8 rounded-3xl border-2 border-blue-200">
           <div className="flex items-start gap-6">
-            {/* Avatar Circle */}
+            {/* Avatar/Photo */}
             <div className="flex-shrink-0">
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-4xl font-bold text-white shadow-lg">
-                {personalInfo.fullName.charAt(0)}
-              </div>
+              {personalInfo.photo ? (
+                <img 
+                  src={personalInfo.photo} 
+                  alt={personalInfo.fullName}
+                  className="w-24 h-24 rounded-full object-cover border-4 border-gradient-to-br from-blue-500 to-purple-600 shadow-lg"
+                />
+              ) : (
+                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-4xl font-bold text-white shadow-lg">
+                  {personalInfo.fullName.charAt(0)}
+                </div>
+              )}
             </div>
             
             {/* Header Content */}
