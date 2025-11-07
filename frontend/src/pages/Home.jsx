@@ -94,12 +94,12 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white rounded-3xl shadow-sm">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white dark:bg-slate-800 rounded-3xl shadow-lg dark:shadow-2xl transition-colors">
         <div className="text-center mb-16">
-          <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+          <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
             Everything You Need
           </h3>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-slate-600 dark:text-slate-300">
             Powerful features to create a portfolio that stands out
           </p>
         </div>
@@ -107,12 +107,12 @@ const Home = () => {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <div key={index} className="text-center space-y-4 p-6 rounded-xl hover:bg-slate-50 transition-colors">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl">
-                  <Icon className="w-8 h-8 text-blue-600" />
+              <div key={index} className="text-center space-y-4 p-6 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-2xl transition-colors">
+                  <Icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                 </div>
-                <h4 className="text-xl font-semibold text-slate-900">{feature.title}</h4>
-                <p className="text-slate-600">{feature.description}</p>
+                <h4 className="text-xl font-semibold text-slate-900 dark:text-white">{feature.title}</h4>
+                <p className="text-slate-600 dark:text-slate-300">{feature.description}</p>
               </div>
             );
           })}
