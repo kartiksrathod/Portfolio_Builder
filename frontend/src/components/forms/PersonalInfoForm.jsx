@@ -78,10 +78,11 @@ const PersonalInfoForm = () => {
           <input
             type="tel"
             value={personalInfo.phone}
-            onChange={(e) => updateField('personalInfo', 'phone', e.target.value)}
-            className="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
+            onChange={handlePhoneChange}
+            className={`w-full px-4 py-2.5 border ${errors.phone ? 'border-red-500 dark:border-red-400' : 'border-slate-300 dark:border-slate-600'} bg-white dark:bg-slate-700 text-slate-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all`}
             placeholder="+1 (555) 123-4567"
           />
+          {errors.phone && <p className="text-xs text-red-500 dark:text-red-400">{errors.phone}</p>}
         </div>
       </div>
       <div className="space-y-2">
