@@ -70,6 +70,18 @@ module.exports = {
   				to: {
   					height: '0'
   				}
+  			},
+  			'fade-in': {
+  				'0%': { opacity: '0' },
+  				'100%': { opacity: '1' }
+  			},
+  			'slide-up': {
+  				'0%': { transform: 'translateY(10px)', opacity: '0' },
+  				'100%': { transform: 'translateY(0)', opacity: '1' }
+  			},
+  			'slide-in': {
+  				'0%': { transform: 'translateX(-10px)', opacity: '0' },
+  				'100%': { transform: 'translateX(0)', opacity: '1' }
   			}
   		},
   		animation: {
