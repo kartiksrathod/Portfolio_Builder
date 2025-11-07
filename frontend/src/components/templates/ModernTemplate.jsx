@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail, Phone, MapPin, ExternalLink, Github, Linkedin, Twitter, Globe } from 'lucide-react';
 
-const ModernTemplate = ({ data }) => {
+const ModernTemplate = React.memo(({ data }) => {
   const { personalInfo, experience, education, skills, projects, contact } = data;
 
   return (
