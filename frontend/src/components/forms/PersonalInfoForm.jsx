@@ -1,23 +1,31 @@
 import React, { useState } from 'react';
 import { usePortfolio } from '../../context/PortfolioContext';
+import { validateEmail, validatePhone } from '../../utils/validation';
 
 const PersonalInfoForm = () => {
   const { portfolioData, updateField } = usePortfolio();
   const { personalInfo } = portfolioData;
   const [errors, setErrors] = useState({});
 
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-  };
-
   const handleEmailChange = (e) => {
     const value = e.target.value;
     updateField('personalInfo', 'email', value);
-    if (value && !validateEmail(value)) {
-      setErrors(prev => ({ ...prev, email: 'Please enter a valid email' }));
+    const validation = validateEmail(value);
+    if (!validation.valid) {
+      setErrors(prev => ({ ...prev, email: validation.error }));
     } else {
       setErrors(prev => ({ ...prev, email: '' }));
+    }
+  };
+
+  const handlePhoneChange = (e) => {
+    const value = e.target.value;
+    updateField('personalInfo', 'phone', value);
+    const validation = validatePhone(value);
+    if (!validation.valid) {
+      setErrors(prev => ({ ...prev, phone: validation.error }));
+    } else {
+      setErrors(prev => ({ ...prev, phone: '' }));
     }
   };
 
