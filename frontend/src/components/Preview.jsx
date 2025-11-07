@@ -44,7 +44,9 @@ const Preview = React.memo(() => {
       {/* Preview Container */}
       <div className="bg-white dark:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-600 overflow-hidden shadow-inner">
         <div className="max-h-[600px] overflow-y-auto p-8 custom-scrollbar">
-          <SelectedTemplateComponent data={portfolioData} />
+          <div id="portfolio-preview">
+            <SelectedTemplateComponent data={portfolioData} />
+          </div>
         </div>
       </div>
     </div>
