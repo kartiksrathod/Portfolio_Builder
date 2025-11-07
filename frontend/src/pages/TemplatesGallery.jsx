@@ -271,18 +271,21 @@ const TemplatesGallery = () => {
               >
                 {/* Template Preview */}
                 <div className="relative bg-slate-50 dark:bg-slate-700 p-4 h-96 overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute inset-0 p-4 flex items-start justify-center overflow-hidden">
                     <div 
-                      className="w-full h-full overflow-y-auto custom-scrollbar scale-50 origin-top-left"
-                      style={{ width: '200%', height: '200%' }}
+                      className="origin-top scale-[0.28] w-[357%]"
+                      style={{ 
+                        transformOrigin: 'top center',
+                        maxHeight: '1400px'
+                      }}
                     >
-                      <div className="bg-white dark:bg-slate-800 p-8">
+                      <div className="bg-white dark:bg-slate-800 p-8 shadow-lg">
                         <TemplateComponent data={sampleData} />
                       </div>
                     </div>
                   </div>
                   {isSelected && (
-                    <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 shadow-lg">
+                    <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 shadow-lg z-10">
                       <Check className="w-4 h-4" />
                       Active
                     </div>
