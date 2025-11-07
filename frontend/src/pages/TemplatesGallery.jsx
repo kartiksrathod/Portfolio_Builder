@@ -141,19 +141,30 @@ const TemplatesGallery = () => {
     tempDiv.style.left = '-9999px';
     tempDiv.style.top = '0';
     tempDiv.style.width = '210mm'; // A4 width
+    tempDiv.style.padding = '20px';
+    tempDiv.style.backgroundColor = '#ffffff';
     document.body.appendChild(tempDiv);
 
     // Render the selected template component with user's actual data
     const template = templates.find(t => t.id === templateId);
     const TemplateComponent = template.component;
     
-    // We'll use a temporary root to render the component
-    const root = document.createElement('div');
-    root.innerHTML = `<div id="pdf-content"></div>`;
-    tempDiv.appendChild(root);
-
     try {
+      // Create root and render the component with user's data
+      const root = ReactDOM.createRoot(tempDiv);
+      
+      // Render and wait for it to complete
+      await new Promise((resolve) => {
+        root.render(<TemplateComponent data={portfolioData} />);
+        // Give it time to render
+        setTimeout(resolve, 500);
+      });
+
       const success = await exportToPDF('temp-pdf-export', `${templateName.toLowerCase()}-portfolio.pdf`);
+      
+      // Cleanup
+      root.unmount();
+      document.body.removeChild(tempDiv);
       
       if (success) {
         toast({
@@ -168,13 +179,17 @@ const TemplatesGallery = () => {
         });
       }
     } catch (error) {
+      console.error('PDF Export Error:', error);
+      // Cleanup on error
+      if (document.body.contains(tempDiv)) {
+        document.body.removeChild(tempDiv);
+      }
       toast({
         title: "Export Failed",
         description: "There was an error exporting your portfolio. Please try again.",
         variant: "destructive",
       });
     } finally {
-      document.body.removeChild(tempDiv);
       setIsExporting(false);
     }
   };
