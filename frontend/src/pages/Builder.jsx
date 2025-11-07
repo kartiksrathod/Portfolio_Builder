@@ -131,13 +131,7 @@ const Builder = () => {
                 </Button>
               </div>
               <div className={`${showPreview ? 'block' : 'hidden lg:block'}`}>
-                <div className="bg-slate-50 rounded-lg p-8 min-h-[600px] border border-slate-200">
-                  <div className="text-center text-slate-400">
-                    <FileText className="w-16 h-16 mx-auto mb-4" />
-                    <p>Preview will appear here</p>
-                    <p className="text-sm mt-2">Coming in the next phase</p>
-                  </div>
-                </div>
+                <Preview />
               </div>
             </div>
           </div>
