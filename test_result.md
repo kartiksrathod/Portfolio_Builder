@@ -300,11 +300,11 @@ frontend:
 
   - task: "Phase 3: Performance Optimizations"
     implemented: true
-    working: false
+    working: "NA"
     file: "/app/frontend/src/components/templates/*.jsx, /app/frontend/src/utils/exportPDF.js"
     stuck_count: 1
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
       - working: "NA"
         agent: "main"
@@ -312,14 +312,17 @@ frontend:
       - working: false
         agent: "testing"
         comment: "❌ CRITICAL ISSUE: Template switching performance is excellent - all 4 templates switch smoothly with React.memo optimization working. However, PDF export is FAILING with CanvasGradient error: 'Failed to execute addColorStop on CanvasGradient: The provided double value is non-finite.' This prevents PDF generation completely. The error occurs during html2canvas processing, likely due to CSS gradient values in one of the templates."
+      - working: "NA"
+        agent: "main"
+        comment: "FIXED: Added onclone callback to html2canvas that finds all gradient elements and ensures minimum dimensions (1px width/height) to prevent CanvasGradient non-finite errors. Ready for retesting."
 
   - task: "Phase 3: Form Validation"
     implemented: true
-    working: false
+    working: "NA"
     file: "/app/frontend/src/utils/validation.js, /app/frontend/src/components/forms/PersonalInfoForm.jsx, /app/frontend/src/components/forms/ContactForm.jsx"
     stuck_count: 1
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
       - working: "NA"
         agent: "main"
@@ -327,6 +330,9 @@ frontend:
       - working: false
         agent: "testing"
         comment: "❌ PARTIAL FAILURE: PersonalInfoForm validation working perfectly - email validation shows 'Please enter a valid email address' for invalid emails, phone validation shows 'Please enter a valid phone number' for invalid phones. Both clear errors when valid input entered. However, ContactForm URL validation is NOT working - no error messages, red borders, or alert icons appear when invalid URLs are entered in GitHub, LinkedIn, Twitter, or Website fields."
+      - working: "NA"
+        agent: "main"
+        comment: "FIXED: Enhanced isValidURL() to be stricter - now requires valid domain format with at least one dot (e.g., 'github.com'), minimum hostname length > 3, and filters out spaces/invalid characters. Should now properly reject invalid URLs like 'notaurl'. Ready for retesting."
 
   - task: "Phase 3: Dark Mode Support"
     implemented: true
