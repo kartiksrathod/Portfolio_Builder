@@ -39,24 +39,28 @@ const Builder = () => {
 
   const handleExport = async () => {
     setIsExporting(true);
-    toast({
+    
+    const toastId = toast({
       title: "Generating PDF",
       description: "Please wait while we create your portfolio PDF...",
     });
 
-    const success = await exportToPDF();
+    const success = await exportToPDF('portfolio-preview', 'portfolio.pdf', (progress) => {
+      // Progress callback - could update UI if needed
+      console.log(`PDF Export Progress: ${progress}%`);
+    });
     
     setIsExporting(false);
     
     if (success) {
       toast({
-        title: "PDF Exported",
-        description: "Your portfolio has been downloaded successfully.",
+        title: "✓ PDF Exported Successfully!",
+        description: "Your portfolio has been downloaded.",
       });
     } else {
       toast({
         title: "Export Failed",
-        description: "There was an error exporting your portfolio.",
+        description: "There was an error exporting your portfolio. Please try again.",
         variant: "destructive",
       });
     }
