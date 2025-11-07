@@ -121,7 +121,7 @@ const Home = () => {
 
       {/* CTA Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="bg-slate-900 rounded-3xl p-12 text-center space-y-6">
+        <div className="bg-slate-900 dark:bg-gradient-to-br dark:from-blue-900 dark:to-slate-900 rounded-3xl p-12 text-center space-y-6 shadow-xl transition-all">
           <h3 className="text-3xl sm:text-4xl font-bold text-white">
             Ready to Build Your Portfolio?
           </h3>
@@ -131,7 +131,7 @@ const Home = () => {
           <Button 
             onClick={() => navigate('/builder')}
             size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-6"
+            className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-lg px-8 py-6"
           >
             Get Started for Free
           </Button>
@@ -139,9 +139,9 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white mt-20">
+      <footer className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 mt-20 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <p className="text-center text-slate-600">
+          <p className="text-center text-slate-600 dark:text-slate-400">
             © 2025 Portfolio Builder. Built with React.
           </p>
         </div>
