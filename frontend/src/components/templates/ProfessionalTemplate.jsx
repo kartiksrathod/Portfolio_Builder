@@ -2,7 +2,7 @@ import React from 'react';
 import { Mail, Phone, MapPin, ExternalLink, Github, Linkedin, Twitter, Globe, Briefcase, GraduationCap, Code, FolderGit2 } from 'lucide-react';
 
 const ProfessionalTemplate = React.memo(({ data }) => {
-  const { personalInfo, experience, education, skills, projects, contact } = data;
+  const { personalInfo, experience, education, skills, projects, contact, certifications = [] } = data;
 
   return (
     <div className="bg-white min-h-full" id="portfolio-preview">
@@ -10,6 +10,17 @@ const ProfessionalTemplate = React.memo(({ data }) => {
       <div className="flex flex-col md:flex-row gap-6 mb-6">
         {/* Left Sidebar */}
         <div className="md:w-1/3 bg-slate-900 text-white p-6 rounded-lg">
+          {/* Photo */}
+          {personalInfo.photo && (
+            <div className="mb-6 flex justify-center">
+              <img 
+                src={personalInfo.photo} 
+                alt={personalInfo.fullName}
+                className="w-32 h-32 rounded-full object-cover border-4 border-blue-500 shadow-lg"
+              />
+            </div>
+          )}
+          
           <h1 className="text-3xl font-bold mb-2">{personalInfo.fullName}</h1>
           <p className="text-blue-400 text-lg mb-6">{personalInfo.title}</p>
           
