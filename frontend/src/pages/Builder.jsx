@@ -105,6 +105,16 @@ const Builder = () => {
                 {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </Button>
               <Button 
+                variant="ghost"
+                size="icon"
+                onClick={() => setShowQRCode(true)}
+                className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                aria-label="Generate QR Code"
+                title="Generate QR Code"
+              >
+                <QrCode className="w-5 h-5" />
+              </Button>
+              <Button 
                 size="sm"
                 onClick={handleExport}
                 disabled={isExporting}
