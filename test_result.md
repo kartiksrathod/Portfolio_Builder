@@ -462,6 +462,11 @@ metadata:
 
 test_plan:
   current_focus:
+    - "Professional Photo Upload with Cropping Tool"
+    - "Custom Color Scheme Picker for Templates"
+    - "QR Code Generation for Portfolio Sharing"
+    - "Professional Print-Friendly CSS Styling"
+    - "Certifications & Awards Section"
     - "Builder Live Preview Maximize/Minimize Feature"
     - "Templates Gallery Page with Fullscreen & PDF Export"
     - "Phase 3: Performance Optimizations" 
