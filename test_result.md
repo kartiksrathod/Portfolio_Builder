@@ -315,15 +315,18 @@ frontend:
 
   - task: "Phase 3: Form Validation"
     implemented: true
-    working: "NA"
+    working: false
     file: "/app/frontend/src/utils/validation.js, /app/frontend/src/components/forms/PersonalInfoForm.jsx, /app/frontend/src/components/forms/ContactForm.jsx"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Created comprehensive validation utilities supporting email, phone, URL validation with flexible formats. Enhanced PersonalInfoForm with real-time email and phone validation showing error messages. Enhanced ContactForm with URL validation for all social links (GitHub, LinkedIn, Twitter, Website) with visual error indicators (red borders, alert icons, error messages). All validation happens in real-time as user types."
+      - working: false
+        agent: "testing"
+        comment: "❌ PARTIAL FAILURE: PersonalInfoForm validation working perfectly - email validation shows 'Please enter a valid email address' for invalid emails, phone validation shows 'Please enter a valid phone number' for invalid phones. Both clear errors when valid input entered. However, ContactForm URL validation is NOT working - no error messages, red borders, or alert icons appear when invalid URLs are entered in GitHub, LinkedIn, Twitter, or Website fields."
 
   - task: "Phase 3: Dark Mode Support"
     implemented: true
