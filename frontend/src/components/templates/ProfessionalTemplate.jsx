@@ -198,6 +198,41 @@ const ProfessionalTemplate = React.memo(({ data }) => {
               </div>
             </div>
           )}
+
+          {/* Certifications & Awards */}
+          {certifications.length > 0 && certifications[0].name && (
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <div className="w-1 h-6 bg-blue-600 rounded"></div>
+                Certifications & Awards
+              </h2>
+              <div className="space-y-4">
+                {certifications.map((cert) => (
+                  <div key={cert.id} className="border-l-2 border-slate-300 pl-4">
+                    <div className="flex justify-between items-start mb-1">
+                      <h3 className="font-semibold text-slate-900">{cert.name}</h3>
+                      {cert.date && (
+                        <span className="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">{cert.date}</span>
+                      )}
+                    </div>
+                    <p className="text-blue-600 font-medium text-sm mb-1">{cert.issuer}</p>
+                    {cert.description && <p className="text-slate-600 text-sm mb-2">{cert.description}</p>}
+                    <div className="flex gap-3 text-xs">
+                      {cert.credentialId && (
+                        <span className="text-slate-500">ID: {cert.credentialId}</span>
+                      )}
+                      {cert.url && (
+                        <a href={cert.url} className="text-blue-600 hover:underline flex items-center gap-1">
+                          <ExternalLink className="w-3 h-3" />
+                          View Credential
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
