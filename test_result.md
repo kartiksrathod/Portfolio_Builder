@@ -300,11 +300,11 @@ frontend:
 
   - task: "Phase 3: Performance Optimizations"
     implemented: true
-    working: false
+    working: "NA"
     file: "/app/frontend/src/components/templates/*.jsx, /app/frontend/src/utils/exportPDF.js"
     stuck_count: 2
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
       - working: "NA"
         agent: "main"
@@ -318,6 +318,9 @@ frontend:
       - working: false
         agent: "testing"
         comment: "❌ RETEST FAILED: PDF export still broken for Modern and Creative templates. Minimal and Professional templates work correctly (✅ SUCCESS), but Modern and Creative templates still fail with same CanvasGradient non-finite error. The onclone callback fix is not sufficient - the issue persists in templates with complex gradients. Template switching performance is excellent with React.memo optimization working perfectly."
+      - working: "NA"
+        agent: "main"
+        comment: "ENHANCED FIX (Round 2): After websearch research, implemented comprehensive gradient handling. Now scans ALL elements for CSS gradient backgrounds (not just class patterns), checks computed backgroundImage for 'gradient' keywords, ensures minimum 2px dimensions for any gradient element, handles getBoundingClientRect and computed styles properly. This addresses the root cause: zero-length gradient lines causing division by zero in html2canvas internal calculations, producing NaN/Infinity offsets for addColorStop(). Ready for retest."
 
   - task: "Phase 3: Form Validation"
     implemented: true
