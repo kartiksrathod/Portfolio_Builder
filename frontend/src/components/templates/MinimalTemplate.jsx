@@ -2,15 +2,29 @@ import React from 'react';
 import { Mail, Phone, MapPin, ExternalLink, Github } from 'lucide-react';
 
 const MinimalTemplate = React.memo(({ data }) => {
-  const { personalInfo, experience, education, skills, projects, contact } = data;
+  const { personalInfo, experience, education, skills, projects, contact, certifications = [] } = data;
 
   return (
     <div className="bg-white min-h-full p-8 transition-colors duration-300" id="portfolio-preview">
       {/* Header Section */}
       <div className="border-b-2 border-slate-200 pb-8 mb-8 animate-fade-in">
-        <h1 className="text-4xl font-bold text-slate-900 mb-2">{personalInfo.fullName}</h1>
-        <p className="text-xl text-slate-600 mb-4">{personalInfo.title}</p>
-        <p className="text-slate-700 mb-6 max-w-3xl">{personalInfo.bio}</p>
+        <div className="flex items-start gap-6 mb-6">
+          {/* Photo */}
+          {personalInfo.photo && (
+            <img 
+              src={personalInfo.photo} 
+              alt={personalInfo.fullName}
+              className="w-32 h-32 rounded-full object-cover border-4 border-slate-200 flex-shrink-0"
+            />
+          )}
+          
+          {/* Header Content */}
+          <div className="flex-1">
+            <h1 className="text-4xl font-bold text-slate-900 mb-2">{personalInfo.fullName}</h1>
+            <p className="text-xl text-slate-600 mb-4">{personalInfo.title}</p>
+            <p className="text-slate-700 mb-6 max-w-3xl">{personalInfo.bio}</p>
+          </div>
+        </div>
         
         {/* Contact Info */}
         <div className="flex flex-wrap gap-4 text-sm text-slate-600">
