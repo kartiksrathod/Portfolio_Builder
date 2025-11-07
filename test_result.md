@@ -324,11 +324,11 @@ frontend:
 
   - task: "Phase 3: Form Validation"
     implemented: true
-    working: false
+    working: "NA"
     file: "/app/frontend/src/utils/validation.js, /app/frontend/src/components/forms/PersonalInfoForm.jsx, /app/frontend/src/components/forms/ContactForm.jsx"
     stuck_count: 2
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
       - working: "NA"
         agent: "main"
@@ -342,6 +342,9 @@ frontend:
       - working: false
         agent: "testing"
         comment: "❌ RETEST FAILED: Contact form URL validation partially working but incomplete. Red borders and error messages appear for invalid URLs (notaurl, test, invalid) but alert icons are missing. Additionally, 'no.com' is incorrectly accepted as valid (no red border, no error message) when it should be rejected. The isValidURL() function needs further refinement to properly reject short domains and ensure all visual indicators (red border + alert icon + error message) appear consistently."
+      - working: "NA"
+        agent: "main"
+        comment: "ENHANCED FIX (Round 2): Completely rewrote isValidURL() with strict validation - requires minimum 5 char hostname (rejects edge cases like 'no.co'), validates each domain part is at least 2 chars (rejects 'x.y', 'no.com'), checks valid hostname pattern (alphanumeric, dots, hyphens only), rejects spaces and URLs < 4 chars. Enhanced AlertCircle icon in ContactForm with z-index: 10 and pointer-events-none to ensure proper visibility and prevent click interference. Added aria-hidden for accessibility. Ready for comprehensive retest."
 
   - task: "Phase 3: Dark Mode Support"
     implemented: true
