@@ -4,12 +4,15 @@ import { usePortfolio } from '../context/PortfolioContext';
 import { Button } from '../components/ui/button';
 import { FileText, Save, Download, ArrowLeft } from 'lucide-react';
 import FormSection from '../components/FormSection';
+import Preview from '../components/Preview';
 import { toast } from '../hooks/use-toast';
+import { exportToPDF } from '../utils/exportPDF';
 
 const Builder = () => {
   const navigate = useNavigate();
   const { savePortfolio } = usePortfolio();
   const [showPreview, setShowPreview] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
 
   const handleSave = () => {
     const success = savePortfolio();
@@ -27,12 +30,29 @@ const Builder = () => {
     }
   };
 
-  const handleExport = () => {
-    // Placeholder for export functionality
+  const handleExport = async () => {
+    setIsExporting(true);
     toast({
-      title: "Export Feature",
-      description: "PDF export will be available soon!",
+      title: "Generating PDF",
+      description: "Please wait while we create your portfolio PDF...",
     });
+
+    const success = await exportToPDF();
+    
+    setIsExporting(false);
+    
+    if (success) {
+      toast({
+        title: "PDF Exported",
+        description: "Your portfolio has been downloaded successfully.",
+      });
+    } else {
+      toast({
+        title: "Export Failed",
+        description: "There was an error exporting your portfolio.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
