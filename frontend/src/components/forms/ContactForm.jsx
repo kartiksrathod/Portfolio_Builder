@@ -48,7 +48,7 @@ const ContactForm = () => {
                   placeholder={social.placeholder}
                 />
                 {errors[social.key] && (
-                  <AlertCircle className="w-5 h-5 text-red-500 dark:text-red-400 absolute right-3 top-1/2 -translate-y-1/2" />
+                  <AlertCircle className="w-5 h-5 text-red-500 dark:text-red-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none z-10" aria-hidden="true" />
                 )}
               </div>
               {errors[social.key] && (
