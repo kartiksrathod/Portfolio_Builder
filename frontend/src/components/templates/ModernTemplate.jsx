@@ -180,6 +180,4 @@ const ModernTemplate = React.memo(({ data }) => {
       </div>
     </div>
   );
-};
-
-export default ModernTemplate;
+});\n\nModernTemplate.displayName = 'ModernTemplate';\n\nexport default ModernTemplate;
