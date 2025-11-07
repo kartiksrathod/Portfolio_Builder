@@ -83,6 +83,7 @@ const Home = () => {
               Start Building
             </Button>
             <Button 
+              onClick={() => navigate('/templates')}
               variant="outline"
               size="lg"
               className="text-lg px-8 py-6 border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700"
