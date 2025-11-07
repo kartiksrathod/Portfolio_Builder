@@ -3,6 +3,7 @@ import { usePortfolio } from '../context/PortfolioContext';
 import MinimalTemplate from './templates/MinimalTemplate';
 import ModernTemplate from './templates/ModernTemplate';
 import ProfessionalTemplate from './templates/ProfessionalTemplate';
+import CreativeTemplate from './templates/CreativeTemplate';
 import { Button } from './ui/button';
 
 const Preview = React.memo(() => {
@@ -11,7 +12,8 @@ const Preview = React.memo(() => {
   const templates = useMemo(() => [
     { id: 'minimal', name: 'Minimal', component: MinimalTemplate },
     { id: 'modern', name: 'Modern', component: ModernTemplate },
-    { id: 'professional', name: 'Professional', component: ProfessionalTemplate }
+    { id: 'professional', name: 'Professional', component: ProfessionalTemplate },
+    { id: 'creative', name: 'Creative', component: CreativeTemplate }
   ], []);
 
   const SelectedTemplateComponent = useMemo(() => 
