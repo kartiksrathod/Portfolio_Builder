@@ -23,8 +23,15 @@ export const isValidURL = (url) => {
   try {
     // Allow URLs without protocol
     const urlToTest = url.startsWith('http') ? url : `https://${url}`;
-    new URL(urlToTest);
-    return true;
+    const urlObj = new URL(urlToTest);
+    
+    // Check if hostname has at least one dot (e.g., github.com, not just "notaurl")
+    // and doesn't contain spaces or invalid characters
+    const hasValidDomain = urlObj.hostname.includes('.') && 
+                          !urlObj.hostname.includes(' ') &&
+                          urlObj.hostname.length > 3;
+    
+    return hasValidDomain;
   } catch {
     return false;
   }
