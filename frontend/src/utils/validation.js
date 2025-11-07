@@ -20,18 +20,58 @@ export const isValidEmail = (email) => {
  */
 export const isValidURL = (url) => {
   if (!url) return true; // Empty is valid (optional field)
+  
+  // Trim whitespace
+  url = url.trim();
+  
+  // Reject if contains spaces or is too short
+  if (url.includes(' ') || url.length < 4) {
+    return false;
+  }
+  
   try {
     // Allow URLs without protocol
-    const urlToTest = url.startsWith('http') ? url : `https://${url}`;
+    const urlToTest = url.startsWith('http://') || url.startsWith('https://') ? url : `https://${url}`;
     const urlObj = new URL(urlToTest);
     
-    // Check if hostname has at least one dot (e.g., github.com, not just "notaurl")
-    // and doesn't contain spaces or invalid characters
-    const hasValidDomain = urlObj.hostname.includes('.') && 
-                          !urlObj.hostname.includes(' ') &&
-                          urlObj.hostname.length > 3;
+    // Extract hostname and validate
+    const hostname = urlObj.hostname;
     
-    return hasValidDomain;
+    // Must have at least one dot
+    if (!hostname.includes('.')) {
+      return false;
+    }
+    
+    // Split into parts (e.g., "github.com" -> ["github", "com"])
+    const parts = hostname.split('.');
+    
+    // Must have at least 2 parts
+    if (parts.length < 2) {
+      return false;
+    }
+    
+    // Each part must be at least 2 characters (rejects "x.y", "no.co" edge cases)
+    // Exception: TLDs like ".io" are valid, so only check non-TLD parts
+    const domainPart = parts[parts.length - 2]; // The main domain part
+    const tldPart = parts[parts.length - 1]; // The TLD
+    
+    if (domainPart.length < 2 || tldPart.length < 2) {
+      return false;
+    }
+    
+    // Ensure no invalid characters in hostname
+    const validHostnamePattern = /^[a-zA-Z0-9.-]+$/;
+    if (!validHostnamePattern.test(hostname)) {
+      return false;
+    }
+    
+    // Overall hostname should be at least 4 characters (e.g., "x.co" = 4)
+    // But we want more strict - at least 5 to reject edge cases like "no.co"
+    if (hostname.length < 5) {
+      return false;
+    }
+    
+    return true;
   } catch {
     return false;
   }
