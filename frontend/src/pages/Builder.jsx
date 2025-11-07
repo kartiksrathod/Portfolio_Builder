@@ -223,6 +223,9 @@ const Builder = () => {
           </div>
         </div>
       )}
+
+      {/* QR Code Generator Modal */}
+      <QRCodeGenerator isOpen={showQRCode} onClose={() => setShowQRCode(false)} />
     </div>
   );
 };
