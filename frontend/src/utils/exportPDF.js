@@ -34,22 +34,50 @@ export const exportToPDF = async (
       // Optimize rendering
       windowWidth: element.scrollWidth,
       windowHeight: element.scrollHeight,
-      // Fix gradient rendering issues by ensuring elements have proper dimensions
+      // Fix gradient rendering issues - comprehensive approach
       onclone: (clonedDoc) => {
-        // Find all gradient elements and ensure they have minimum width
-        const gradientElements = clonedDoc.querySelectorAll('[class*="gradient"]');
-        gradientElements.forEach(el => {
+        // Strategy: Find all elements with gradient backgrounds and ensure they have proper dimensions
+        // This prevents CanvasGradient non-finite errors caused by zero-width/height elements
+        
+        const allElements = clonedDoc.querySelectorAll('*');
+        allElements.forEach(el => {
           const computedStyle = window.getComputedStyle(el);
-          const width = parseFloat(computedStyle.width);
-          const height = parseFloat(computedStyle.height);
+          const bgImage = computedStyle.backgroundImage;
           
-          // Ensure minimum dimensions to prevent zero-width/height gradient errors
-          if (width === 0 || isNaN(width)) {
-            el.style.minWidth = '1px';
+          // Check if element has any gradient
+          if (bgImage && (bgImage.includes('gradient') || bgImage.includes('linear') || bgImage.includes('radial'))) {
+            const rect = el.getBoundingClientRect();
+            const width = rect.width || parseFloat(computedStyle.width) || 0;
+            const height = rect.height || parseFloat(computedStyle.height) || 0;
+            
+            // Force minimum dimensions for gradient elements to prevent zero-length calculations
+            if (width === 0 || isNaN(width) || width < 1) {
+              el.style.minWidth = '2px';
+              el.style.width = '2px';
+            }
+            if (height === 0 || isNaN(height) || height < 1) {
+              el.style.minHeight = '2px';
+              el.style.height = '2px';
+            }
+            
+            // Also ensure display is not 'none' for gradient elements
+            if (computedStyle.display === 'none') {
+              el.style.display = 'block';
+            }
           }
-          if (height === 0 || isNaN(height)) {
-            el.style.minHeight = '1px';
-          }
+        });
+        
+        // Additional safety: Find elements by class patterns commonly used for gradients
+        const gradientPatterns = ['gradient', 'bg-gradient', 'from-', 'to-', 'via-'];
+        gradientPatterns.forEach(pattern => {
+          const elements = clonedDoc.querySelectorAll(`[class*="${pattern}"]`);
+          elements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.width < 1 || rect.height < 1) {
+              el.style.minWidth = '2px';
+              el.style.minHeight = '2px';
+            }
+          });
         });
       }
     });
