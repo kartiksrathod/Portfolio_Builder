@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { usePortfolio } from '../context/PortfolioContext';
+import { useTheme } from '../context/ThemeContext';
 import { Button } from '../components/ui/button';
-import { FileText, Download, ArrowLeft, Eye, EyeOff } from 'lucide-react';
+import { FileText, Download, ArrowLeft, Eye, EyeOff, Moon, Sun } from 'lucide-react';
 import FormSection from '../components/FormSection';
 import Preview from '../components/Preview';
 import SaveIndicator from '../components/SaveIndicator';
@@ -13,6 +14,7 @@ import useAutoSave from '../hooks/useAutoSave';
 const Builder = () => {
   const navigate = useNavigate();
   const { savePortfolio, portfolioData } = usePortfolio();
+  const { isDark, toggleTheme } = useTheme();
   const [showPreview, setShowPreview] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   
