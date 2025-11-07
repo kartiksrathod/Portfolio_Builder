@@ -2,6 +2,7 @@ import React from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { User, Briefcase, GraduationCap, Code, FolderGit2, Mail } from 'lucide-react';
+import PersonalInfoForm from './forms/PersonalInfoForm';
 import ExperienceForm from './forms/ExperienceForm';
 import EducationForm from './forms/EducationForm';
 import SkillsForm from './forms/SkillsForm';
