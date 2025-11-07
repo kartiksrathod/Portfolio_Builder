@@ -22,16 +22,16 @@ const Preview = React.memo(() => {
   return (
     <div className="space-y-4">
       {/* Template Selector */}
-      <div className="flex items-center gap-2 pb-4 border-b border-slate-200">
+      <div className="flex items-center gap-2 pb-4 border-b border-slate-200 flex-wrap">
         <span className="text-sm font-medium text-slate-700">Template:</span>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           {templates.map((template) => (
             <Button
               key={template.id}
               size="sm"
               variant={selectedTemplate === template.id ? 'default' : 'outline'}
               onClick={() => setSelectedTemplate(template.id)}
-              className={selectedTemplate === template.id ? 'bg-blue-600 hover:bg-blue-700' : 'border-slate-300'}
+              className={`transition-all ${selectedTemplate === template.id ? 'bg-blue-600 hover:bg-blue-700' : 'border-slate-300 hover:border-blue-300'}`}
             >
               {template.name}
             </Button>
@@ -40,13 +40,15 @@ const Preview = React.memo(() => {
       </div>
 
       {/* Preview Container */}
-      <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
-        <div className="max-h-[600px] overflow-y-auto p-8">
+      <div className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-inner">
+        <div className="max-h-[600px] overflow-y-auto p-8 custom-scrollbar">
           <SelectedTemplateComponent data={portfolioData} />
         </div>
       </div>
     </div>
   );
-};
+});
+
+Preview.displayName = 'Preview';
 
 export default Preview;
