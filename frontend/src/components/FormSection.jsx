@@ -30,14 +30,14 @@ const FormSection = () => {
   return (
     <div className="space-y-6 animate-fade-in">
       <Tabs defaultValue="personal" className="w-full">
-        <TabsList className="grid grid-cols-3 sm:grid-cols-6 gap-1 sm:gap-2 bg-slate-100 p-1 rounded-lg w-full overflow-x-auto">
+        <TabsList className="grid grid-cols-3 sm:grid-cols-9 gap-1 sm:gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg w-full overflow-x-auto">
           {sections.map((section) => {
             const Icon = section.icon;
             return (
               <TabsTrigger 
                 key={section.id} 
                 value={section.id}
-                className="flex items-center justify-center gap-1 data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-sm rounded-md transition-all min-w-[60px] sm:min-w-0"
+                className="flex items-center justify-center gap-1 data-[state=active]:bg-white data-[state=active]:text-slate-900 dark:data-[state=active]:bg-slate-700 dark:data-[state=active]:text-white data-[state=active]:shadow-sm rounded-md transition-all min-w-[60px] sm:min-w-0"
               >
                 <Icon className="w-4 h-4" />
                 <span className="hidden sm:inline text-sm">{section.label}</span>
@@ -48,6 +48,10 @@ const FormSection = () => {
 
         <TabsContent value="personal" className="mt-6">
           <PersonalInfoForm />
+        </TabsContent>
+
+        <TabsContent value="photo" className="mt-6">
+          <PhotoUploadForm />
         </TabsContent>
 
         <TabsContent value="experience" className="mt-6">
@@ -66,8 +70,16 @@ const FormSection = () => {
           <ProjectsForm />
         </TabsContent>
 
+        <TabsContent value="certifications" className="mt-6">
+          <CertificationsForm />
+        </TabsContent>
+
         <TabsContent value="contact" className="mt-6">
           <ContactForm />
+        </TabsContent>
+
+        <TabsContent value="colors" className="mt-6">
+          <ColorSchemeForm />
         </TabsContent>
       </Tabs>
     </div>
