@@ -150,6 +150,36 @@ const CreativeTemplate = React.memo(({ data }) => {
               </div>
             </div>
           )}
+
+          {/* Certifications & Awards */}
+          {certifications.length > 0 && certifications[0].name && (
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Certifications & Awards</h2>
+              <div className="space-y-4">
+                {certifications.map((cert) => (
+                  <div key={cert.id} className="bg-white rounded-xl p-5 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="font-bold text-slate-900">{cert.name}</h3>
+                      {cert.date && <span className="text-sm text-slate-500 font-medium whitespace-nowrap ml-4">{cert.date}</span>}
+                    </div>
+                    <p className="text-purple-600 font-medium mb-1">{cert.issuer}</p>
+                    {cert.description && <p className="text-slate-600 text-sm mb-2">{cert.description}</p>}
+                    <div className="flex gap-3 text-xs">
+                      {cert.credentialId && (
+                        <span className="text-slate-500">ID: {cert.credentialId}</span>
+                      )}
+                      {cert.url && (
+                        <a href={cert.url} className="text-blue-600 hover:text-blue-700 flex items-center gap-1">
+                          <ExternalLink className="w-3 h-3" />
+                          View Credential
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Right Column - Skills & Contact */}
