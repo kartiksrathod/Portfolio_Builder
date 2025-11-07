@@ -370,6 +370,18 @@ frontend:
         agent: "main"
         comment: "Creative template was already implemented in Phase 2 and is available as the 4th template option. Features gradient backgrounds, rounded corners, colorful skill bars, and modern card-based layout. Now optimized with React.memo."
 
+  - task: "Templates Gallery Page with Fullscreen & PDF Export"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/TemplatesGallery.jsx, /app/frontend/src/App.js, /app/frontend/src/pages/Home.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented comprehensive Templates Gallery page accessible via 'View Templates' button. Features: 2x2 grid layout showing all 4 templates with scaled previews (50%), Fullscreen modal for viewing templates in detail with sample data, PDF export functionality using user's actual portfolio data (not sample), Apply Template button to set active template, Active template indicator with green badge. Includes smooth animations, hover effects, and dark mode support. Navigation: Home -> Templates Gallery, with 'Go to Builder' button in header. Ready for testing to verify: template previews display correctly, fullscreen modal works, PDF export generates correct files with user data, apply template functionality updates builder template selection."
+
 metadata:
   created_by: "main_agent"
   version: "1.0"
