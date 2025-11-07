@@ -137,6 +137,34 @@ const MinimalTemplate = React.memo(({ data }) => {
         </div>
       )}
 
+      {/* Certifications & Awards */}
+      {certifications.length > 0 && certifications[0].name && (
+        <div className="mb-8 animate-fade-in" style={{animationDelay: '0.45s'}}>
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">Certifications & Awards</h2>
+          <div className="space-y-4">
+            {certifications.map((cert) => (
+              <div key={cert.id} className="hover:bg-slate-50 p-4 -mx-4 rounded-lg transition-colors">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-bold text-slate-900">{cert.name}</h3>
+                  {cert.date && <span className="text-sm text-slate-500 whitespace-nowrap ml-4">{cert.date}</span>}
+                </div>
+                <p className="text-slate-700 font-medium mb-1">{cert.issuer}</p>
+                {cert.description && <p className="text-slate-600 text-sm mb-2">{cert.description}</p>}
+                {cert.credentialId && (
+                  <p className="text-xs text-slate-500">Credential ID: {cert.credentialId}</p>
+                )}
+                {cert.url && (
+                  <a href={cert.url} className="text-sm text-slate-600 hover:text-slate-900 font-medium hover:underline transition-colors inline-flex items-center gap-1 mt-2">
+                    <ExternalLink className="w-3 h-3" />
+                    View Credential
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Contact Links */}
       {(contact.github || contact.linkedin || contact.twitter || contact.website) && (
         <div className="border-t-2 border-slate-200 pt-8 animate-fade-in" style={{animationDelay: '0.5s'}}>
