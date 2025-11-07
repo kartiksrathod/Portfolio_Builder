@@ -321,11 +321,11 @@ frontend:
 
   - task: "Phase 3: Form Validation"
     implemented: true
-    working: "NA"
+    working: false
     file: "/app/frontend/src/utils/validation.js, /app/frontend/src/components/forms/PersonalInfoForm.jsx, /app/frontend/src/components/forms/ContactForm.jsx"
-    stuck_count: 1
+    stuck_count: 2
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
@@ -336,6 +336,9 @@ frontend:
       - working: "NA"
         agent: "main"
         comment: "FIXED: Enhanced isValidURL() to be stricter - now requires valid domain format with at least one dot (e.g., 'github.com'), minimum hostname length > 3, and filters out spaces/invalid characters. Should now properly reject invalid URLs like 'notaurl'. Ready for retesting."
+      - working: false
+        agent: "testing"
+        comment: "❌ RETEST FAILED: Contact form URL validation partially working but incomplete. Red borders and error messages appear for invalid URLs (notaurl, test, invalid) but alert icons are missing. Additionally, 'no.com' is incorrectly accepted as valid (no red border, no error message) when it should be rejected. The isValidURL() function needs further refinement to properly reject short domains and ensure all visual indicators (red border + alert icon + error message) appear consistently."
 
   - task: "Phase 3: Dark Mode Support"
     implemented: true
