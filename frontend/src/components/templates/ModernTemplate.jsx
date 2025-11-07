@@ -2,35 +2,49 @@ import React from 'react';
 import { Mail, Phone, MapPin, ExternalLink, Github, Linkedin, Twitter, Globe } from 'lucide-react';
 
 const ModernTemplate = React.memo(({ data }) => {
-  const { personalInfo, experience, education, skills, projects, contact } = data;
+  const { personalInfo, experience, education, skills, projects, contact, certifications = [] } = data;
 
   return (
     <div className="bg-gradient-to-br from-slate-50 to-slate-100 min-h-full" id="portfolio-preview">
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-8 rounded-xl mb-6">
-        <h1 className="text-4xl font-bold mb-2">{personalInfo.fullName}</h1>
-        <p className="text-xl text-blue-400 mb-4">{personalInfo.title}</p>
-        <p className="text-slate-300 max-w-2xl mb-4">{personalInfo.bio}</p>
-        
-        <div className="flex flex-wrap gap-4 text-sm">
-          {personalInfo.email && (
-            <div className="flex items-center gap-1 text-slate-300">
-              <Mail className="w-4 h-4" />
-              {personalInfo.email}
-            </div>
+        <div className="flex items-start gap-6">
+          {/* Photo */}
+          {personalInfo.photo && (
+            <img 
+              src={personalInfo.photo} 
+              alt={personalInfo.fullName}
+              className="w-28 h-28 rounded-full object-cover border-4 border-blue-500 flex-shrink-0 shadow-lg"
+            />
           )}
-          {personalInfo.phone && (
-            <div className="flex items-center gap-1 text-slate-300">
-              <Phone className="w-4 h-4" />
-              {personalInfo.phone}
+          
+          {/* Hero Content */}
+          <div className="flex-1">
+            <h1 className="text-4xl font-bold mb-2">{personalInfo.fullName}</h1>
+            <p className="text-xl text-blue-400 mb-4">{personalInfo.title}</p>
+            <p className="text-slate-300 max-w-2xl mb-4">{personalInfo.bio}</p>
+            
+            <div className="flex flex-wrap gap-4 text-sm">
+              {personalInfo.email && (
+                <div className="flex items-center gap-1 text-slate-300">
+                  <Mail className="w-4 h-4" />
+                  {personalInfo.email}
+                </div>
+              )}
+              {personalInfo.phone && (
+                <div className="flex items-center gap-1 text-slate-300">
+                  <Phone className="w-4 h-4" />
+                  {personalInfo.phone}
+                </div>
+              )}
+              {personalInfo.location && (
+                <div className="flex items-center gap-1 text-slate-300">
+                  <MapPin className="w-4 h-4" />
+                  {personalInfo.location}
+                </div>
+              )}
             </div>
-          )}
-          {personalInfo.location && (
-            <div className="flex items-center gap-1 text-slate-300">
-              <MapPin className="w-4 h-4" />
-              {personalInfo.location}
-            </div>
-          )}
+          </div>
         </div>
       </div>
 
