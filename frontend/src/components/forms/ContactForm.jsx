@@ -61,8 +61,8 @@ const ContactForm = () => {
         })}
       </div>
 
-      <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-        <p className="text-sm text-blue-900">
+      <div className="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg animate-fade-in">
+        <p className="text-sm text-blue-900 dark:text-blue-200">
           <strong>Tip:</strong> Your email and phone from the Personal Info section will also be included in your portfolio's contact section.
         </p>
       </div>
