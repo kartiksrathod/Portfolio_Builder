@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { usePortfolio } from '../../context/PortfolioContext';
-import { Github, Linkedin, Twitter, Globe } from 'lucide-react';
+import { Github, Linkedin, Twitter, Globe, AlertCircle } from 'lucide-react';
+import { validateURL } from '../../utils/validation';
 
 const ContactForm = () => {
   const { portfolioData, updateField } = usePortfolio();
   const { contact } = portfolioData;
+  const [errors, setErrors] = useState({});
 
   const socialLinks = [
     { key: 'github', label: 'GitHub', icon: Github, placeholder: 'https://github.com/username' },
@@ -12,6 +14,16 @@ const ContactForm = () => {
     { key: 'twitter', label: 'Twitter', icon: Twitter, placeholder: 'https://twitter.com/username' },
     { key: 'website', label: 'Personal Website', icon: Globe, placeholder: 'https://yourwebsite.com' }
   ];
+
+  const handleURLChange = (key, value) => {
+    updateField('contact', key, value);
+    const validation = validateURL(value);
+    if (!validation.valid) {
+      setErrors(prev => ({ ...prev, [key]: validation.error }));
+    } else {
+      setErrors(prev => ({ ...prev, [key]: '' }));
+    }
+  };
 
   return (
     <div className="space-y-6">
