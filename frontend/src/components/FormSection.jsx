@@ -1,24 +1,30 @@
 import React from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { User, Briefcase, GraduationCap, Code, FolderGit2, Mail } from 'lucide-react';
+import { User, Briefcase, GraduationCap, Code, FolderGit2, Mail, Camera, Palette, Award } from 'lucide-react';
 import PersonalInfoForm from './forms/PersonalInfoForm';
 import ExperienceForm from './forms/ExperienceForm';
 import EducationForm from './forms/EducationForm';
 import SkillsForm from './forms/SkillsForm';
 import ProjectsForm from './forms/ProjectsForm';
 import ContactForm from './forms/ContactForm';
+import PhotoUploadForm from './forms/PhotoUploadForm';
+import ColorSchemeForm from './forms/ColorSchemeForm';
+import CertificationsForm from './forms/CertificationsForm';
 
 const FormSection = () => {
   const { currentStep, setCurrentStep } = usePortfolio();
 
   const sections = [
     { id: 'personal', label: 'Personal', icon: User },
+    { id: 'photo', label: 'Photo', icon: Camera },
     { id: 'experience', label: 'Experience', icon: Briefcase },
     { id: 'education', label: 'Education', icon: GraduationCap },
     { id: 'skills', label: 'Skills', icon: Code },
     { id: 'projects', label: 'Projects', icon: FolderGit2 },
-    { id: 'contact', label: 'Contact', icon: Mail }
+    { id: 'certifications', label: 'Certifications', icon: Award },
+    { id: 'contact', label: 'Contact', icon: Mail },
+    { id: 'colors', label: 'Colors', icon: Palette }
   ];
 
   return (
