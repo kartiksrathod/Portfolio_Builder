@@ -135,15 +135,26 @@ const Builder = () => {
             <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg dark:shadow-2xl p-6 border border-slate-200 dark:border-slate-700 lg:sticky lg:top-24 animate-fade-in transition-all">
               <div className="mb-6 flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Live Preview</h2>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  onClick={() => setShowPreview(!showPreview)}
-                  className="lg:hidden border-slate-300 dark:border-slate-600"
-                >
-                  {showPreview ? <EyeOff className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
-                  {showPreview ? 'Hide' : 'Show'}
-                </Button>
+                <div className="flex items-center gap-2">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => setIsPreviewMaximized(true)}
+                    className="border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700"
+                    title="Maximize Preview"
+                  >
+                    <Maximize2 className="w-4 h-4" />
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => setShowPreview(!showPreview)}
+                    className="lg:hidden border-slate-300 dark:border-slate-600"
+                  >
+                    {showPreview ? <EyeOff className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
+                    {showPreview ? 'Hide' : 'Show'}
+                  </Button>
+                </div>
               </div>
               <div className={`${showPreview ? 'block' : 'hidden lg:block'} transition-all duration-300`}>
                 <Preview />
@@ -152,6 +163,54 @@ const Builder = () => {
           </div>
         </div>
       </div>
+
+      {/* Fullscreen Preview Modal */}
+      {isPreviewMaximized && (
+        <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm animate-fade-in">
+          <div className="h-full flex flex-col">
+            {/* Modal Header */}
+            <div className="bg-slate-900/90 border-b border-slate-700 px-6 py-4">
+              <div className="max-w-7xl mx-auto flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <h3 className="text-xl font-bold text-white">
+                    Live Preview - Fullscreen
+                  </h3>
+                  <SaveIndicator isSaving={isSaving} lastSaved={lastSaved} />
+                </div>
+                <div className="flex items-center gap-3">
+                  <Button
+                    onClick={handleExport}
+                    disabled={isExporting}
+                    variant="outline"
+                    className="border-slate-600 hover:bg-slate-800 text-white"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    {isExporting ? 'Exporting...' : 'Download PDF'}
+                  </Button>
+                  <Button
+                    onClick={() => setIsPreviewMaximized(false)}
+                    variant="ghost"
+                    size="icon"
+                    className="text-white hover:bg-slate-800"
+                    title="Minimize Preview"
+                  >
+                    <X className="w-5 h-5" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Content */}
+            <div className="flex-1 overflow-auto custom-scrollbar p-8">
+              <div className="max-w-4xl mx-auto bg-white dark:bg-slate-800 rounded-lg shadow-2xl p-12">
+                <div id="portfolio-preview-fullscreen">
+                  <Preview />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
