@@ -402,6 +402,7 @@ metadata:
 
 test_plan:
   current_focus:
+    - "Builder Live Preview Maximize/Minimize Feature"
     - "Templates Gallery Page with Fullscreen & PDF Export"
     - "Phase 3: Performance Optimizations" 
     - "Phase 3: Form Validation"
