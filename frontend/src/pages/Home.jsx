@@ -1,10 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
 import { Button } from '../components/ui/button';
-import { FileText, Sparkles, Download, Save } from 'lucide-react';
+import { FileText, Sparkles, Download, Save, Moon, Sun } from 'lucide-react';
 
 const Home = () => {
   const navigate = useNavigate();
+  const { isDark, toggleTheme } = useTheme();
 
   const features = [
     {
