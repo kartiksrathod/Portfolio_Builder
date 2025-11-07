@@ -390,13 +390,14 @@ metadata:
 
 test_plan:
   current_focus:
+    - "Templates Gallery Page with Fullscreen & PDF Export"
     - "Phase 3: Performance Optimizations" 
     - "Phase 3: Form Validation"
   stuck_tasks:
     - "Phase 3: Performance Optimizations"
     - "Phase 3: Form Validation"
   test_all: false
-  test_priority: "stuck_first"
+  test_priority: "high_first"
 
 agent_communication:
   - agent: "main"
