@@ -63,13 +63,13 @@ const Home = () => {
 
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
-        <div className="text-center space-y-8">
+        <div className="text-center space-y-8 animate-fade-in">
           <div className="space-y-4">
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight">
+            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white tracking-tight animate-slide-up">
               Build Your Professional
-              <span className="block text-blue-600">Portfolio in Minutes</span>
+              <span className="block text-blue-600 dark:text-blue-400">Portfolio in Minutes</span>
             </h2>
-            <p className="text-xl sm:text-2xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl sm:text-2xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               Create a stunning portfolio that showcases your skills, experience, and projects.
               No coding required.
             </p>
@@ -78,14 +78,14 @@ const Home = () => {
             <Button 
               onClick={() => navigate('/builder')}
               size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-6"
+              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-lg px-8 py-6"
             >
               Start Building
             </Button>
             <Button 
               variant="outline"
               size="lg"
-              className="text-lg px-8 py-6 border-slate-300 hover:bg-slate-100"
+              className="text-lg px-8 py-6 border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700"
             >
               View Templates
             </Button>
