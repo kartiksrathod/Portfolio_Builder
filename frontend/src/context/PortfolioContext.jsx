@@ -18,7 +18,8 @@ const initialData = {
     phone: '+1 (555) 123-4567',
     location: 'San Francisco, CA',
     bio: 'Passionate developer with 5+ years of experience building scalable web applications. I love creating elegant solutions to complex problems.',
-    avatar: ''
+    avatar: '',
+    photo: '' // New: base64 encoded photo
   },
   experience: [
     {
@@ -73,11 +74,20 @@ const initialData = {
       liveLink: ''
     }
   ],
+  certifications: [
+    // New: Certifications & Awards section
+  ],
   contact: {
     github: 'https://github.com/johndoe',
     linkedin: 'https://linkedin.com/in/johndoe',
     twitter: 'https://twitter.com/johndoe',
     website: 'https://johndoe.dev'
+  },
+  colorScheme: {
+    // New: Custom color scheme
+    primary: '#3b82f6', // blue-600
+    secondary: '#1e293b', // slate-800
+    accent: '#10b981' // green-500
   }
 };
 
