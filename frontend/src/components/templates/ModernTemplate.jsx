@@ -161,6 +161,43 @@ const ModernTemplate = React.memo(({ data }) => {
           </div>
         )}
 
+        {/* Certifications & Awards Section */}
+        {certifications.length > 0 && certifications[0].name && (
+          <div className="bg-white rounded-xl p-6 shadow-sm">
+            <h2 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <div className="w-1 h-6 bg-blue-600 rounded"></div>
+              Certifications & Awards
+            </h2>
+            <div className="space-y-4">
+              {certifications.map((cert) => (
+                <div key={cert.id} className="border-l-2 border-blue-200 pl-4">
+                  <div className="flex justify-between items-start mb-1">
+                    <h3 className="font-semibold text-slate-900">{cert.name}</h3>
+                    {cert.date && (
+                      <span className="text-sm text-slate-600 bg-slate-100 px-2 py-1 rounded whitespace-nowrap ml-4">
+                        {cert.date}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-blue-600 font-medium text-sm mb-1">{cert.issuer}</p>
+                  {cert.description && <p className="text-slate-600 text-sm mb-2">{cert.description}</p>}
+                  <div className="flex gap-3 text-xs">
+                    {cert.credentialId && (
+                      <span className="text-slate-500">ID: {cert.credentialId}</span>
+                    )}
+                    {cert.url && (
+                      <a href={cert.url} className="text-blue-600 hover:underline flex items-center gap-1">
+                        <ExternalLink className="w-3 h-3" />
+                        View
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Contact Section */}
         <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl p-6 text-white">
           <h2 className="text-2xl font-bold mb-4">Let's Connect</h2>
