@@ -211,6 +211,4 @@ const CreativeTemplate = React.memo(({ data }) => {
       </div>
     </div>
   );
-};
-
-export default CreativeTemplate;
+});\n\nCreativeTemplate.displayName = 'CreativeTemplate';\n\nexport default CreativeTemplate;
