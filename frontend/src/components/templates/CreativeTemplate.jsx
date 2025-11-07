@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail, Phone, MapPin, ExternalLink, Github, Linkedin, Twitter, Globe, Briefcase, GraduationCap } from 'lucide-react';
 
-const CreativeTemplate = ({ data }) => {
+const CreativeTemplate = React.memo(({ data }) => {
   const { personalInfo, experience, education, skills, projects, contact } = data;
 
   return (
