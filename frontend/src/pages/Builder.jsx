@@ -17,6 +17,7 @@ const Builder = () => {
   const { isDark, toggleTheme } = useTheme();
   const [showPreview, setShowPreview] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
+  const [isPreviewMaximized, setIsPreviewMaximized] = useState(false);
   
   // Auto-save functionality
   const { isSaving, lastSaved } = useAutoSave(portfolioData, savePortfolio, 2000);
