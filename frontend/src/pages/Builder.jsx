@@ -115,11 +115,11 @@ const Builder = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Form Section */}
-          <div className="space-y-6">
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
+          <div className="space-y-6 animate-slide-in">
+            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg dark:shadow-2xl p-6 border border-slate-200 dark:border-slate-700 transition-all">
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-slate-900 mb-2">Build Your Portfolio</h2>
-                <p className="text-slate-600">Fill in your information to create your professional portfolio</p>
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Build Your Portfolio</h2>
+                <p className="text-slate-600 dark:text-slate-300">Fill in your information to create your professional portfolio</p>
               </div>
               <FormSection />
             </div>
@@ -127,20 +127,20 @@ const Builder = () => {
 
           {/* Preview Section */}
           <div className="space-y-6">
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 lg:sticky lg:top-24 animate-fade-in">
+            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg dark:shadow-2xl p-6 border border-slate-200 dark:border-slate-700 lg:sticky lg:top-24 animate-fade-in transition-all">
               <div className="mb-6 flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-slate-900">Live Preview</h2>
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Live Preview</h2>
                 <Button 
                   variant="outline" 
                   size="sm"
                   onClick={() => setShowPreview(!showPreview)}
-                  className="lg:hidden border-slate-300"
+                  className="lg:hidden border-slate-300 dark:border-slate-600"
                 >
                   {showPreview ? <EyeOff className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
                   {showPreview ? 'Hide' : 'Show'}
                 </Button>
               </div>
-              <div className={`${showPreview ? 'block' : 'hidden lg:block'} transition-all`}>
+              <div className={`${showPreview ? 'block' : 'hidden lg:block'} transition-all duration-300`}>
                 <Preview />
               </div>
             </div>
