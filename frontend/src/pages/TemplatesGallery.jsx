@@ -350,7 +350,7 @@ const TemplatesGallery = () => {
                       }}
                     >
                       <div className="bg-white dark:bg-slate-800 p-8 shadow-lg">
-                        <TemplateComponent data={sampleData} />
+                        <TemplateComponent data={sampleData} theme="light" />
                       </div>
                     </div>
                   </div>
