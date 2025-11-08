@@ -36,6 +36,13 @@ export const exportToPDF = async (
       windowHeight: element.scrollHeight,
       // Fix gradient rendering issues - comprehensive approach
       onclone: (clonedDoc) => {
+        // Hide Emergent badge in PDF export
+        const emergentBadge = clonedDoc.getElementById('emergent-badge');
+        if (emergentBadge) {
+          emergentBadge.style.display = 'none';
+          emergentBadge.remove();
+        }
+        
         // Strategy: Find all elements with gradient backgrounds and ensure they have proper dimensions
         // This prevents CanvasGradient non-finite errors caused by zero-width/height elements
         
