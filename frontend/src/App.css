@@ -38,6 +38,13 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Hide Emergent badge completely */
+#emergent-badge {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
 /* Enhanced Custom scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
