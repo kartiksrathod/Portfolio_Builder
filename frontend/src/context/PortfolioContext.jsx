@@ -152,12 +152,17 @@ const initialData = {
 
 export const PortfolioProvider = ({ children }) => {
   const [portfolioData, setPortfolioData] = useState(initialData);
-  const [selectedTemplate, setSelectedTemplate] = useState('minimal');
+  const [selectedTemplate, setSelectedTemplate] = useState('tech'); // 'tech', 'creative', 'professional'
+  const [portfolioTheme, setPortfolioTheme] = useState('light'); // 'light', 'dark', 'creative'
   const [currentStep, setCurrentStep] = useState(0);
+  const [isFullPreview, setIsFullPreview] = useState(false);
 
   // Load from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem('portfolioData');
+    const savedTemplate = localStorage.getItem('selectedTemplate');
+    const savedTheme = localStorage.getItem('portfolioTheme');
+    
     if (saved) {
       try {
         setPortfolioData(JSON.parse(saved));
@@ -165,7 +170,25 @@ export const PortfolioProvider = ({ children }) => {
         console.error('Error loading saved data:', error);
       }
     }
+    
+    if (savedTemplate) {
+      setSelectedTemplate(savedTemplate);
+    }
+    
+    if (savedTheme) {
+      setPortfolioTheme(savedTheme);
+    }
   }, []);
+  
+  // Save template to localStorage when changed
+  useEffect(() => {
+    localStorage.setItem('selectedTemplate', selectedTemplate);
+  }, [selectedTemplate]);
+  
+  // Save theme to localStorage when changed
+  useEffect(() => {
+    localStorage.setItem('portfolioTheme', portfolioTheme);
+  }, [portfolioTheme]);
 
   // Update specific field in a section
   const updateField = (section, field, value) => {
