@@ -5,10 +5,9 @@ import { usePortfolio } from '../context/PortfolioContext';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from '../components/ui/button';
 import { FileText, ArrowLeft, Maximize2, Download, X, Check, Moon, Sun } from 'lucide-react';
-import MinimalTemplate from '../components/templates/MinimalTemplate';
-import ModernTemplate from '../components/templates/ModernTemplate';
-import ProfessionalTemplate from '../components/templates/ProfessionalTemplate';
-import CreativeTemplate from '../components/templates/CreativeTemplate';
+import TechPortfolioTemplate from '../components/templates/TechPortfolioTemplate';
+import CreativeShowcaseTemplate from '../components/templates/CreativeShowcaseTemplate';
+import ModernProfessionalTemplate from '../components/templates/ModernProfessionalTemplate';
 import { toast } from '../hooks/use-toast';
 import { exportToPDF } from '../utils/exportPDF';
 
