@@ -26,7 +26,8 @@
   .fixed,
   [role="navigation"],
   [class*="sidebar"],
-  [class*="menu"] {
+  [class*="menu"],
+  #emergent-badge {
     display: none !important;
   }
 
