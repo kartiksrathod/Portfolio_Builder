@@ -225,7 +225,7 @@ const TemplatesGallery = () => {
       
       // Render and wait for it to complete
       await new Promise((resolve) => {
-        root.render(<TemplateComponent data={portfolioData} />);
+        root.render(<TemplateComponent data={portfolioData} theme="light" />);
         // Give it time to render
         setTimeout(resolve, 500);
       });
