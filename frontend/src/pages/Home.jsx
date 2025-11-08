@@ -66,12 +66,12 @@ const Home = () => {
         <div className="text-center space-y-8 animate-fade-in">
           <div className="space-y-4">
             <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white tracking-tight animate-slide-up">
-              Build Your Professional
-              <span className="block text-blue-600 dark:text-blue-400">Portfolio in Minutes</span>
+              Build Your Dream
+              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Portfolio Website</span>
             </h2>
             <p className="text-xl sm:text-2xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Create a stunning portfolio that showcases your skills, experience, and projects.
-              No coding required.
+              Create a stunning, professional portfolio website that showcases your best work.
+              Choose from beautiful templates, add project galleries, and make it yours.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
