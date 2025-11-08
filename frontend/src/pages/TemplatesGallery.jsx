@@ -169,28 +169,22 @@ const TemplatesGallery = () => {
 
   const templates = useMemo(() => [
     { 
-      id: 'minimal', 
-      name: 'Minimal', 
-      description: 'Clean and simple design with focus on content',
-      component: MinimalTemplate 
-    },
-    { 
-      id: 'modern', 
-      name: 'Modern', 
-      description: 'Contemporary design with bold typography',
-      component: ModernTemplate 
-    },
-    { 
-      id: 'professional', 
-      name: 'Professional', 
-      description: 'Classic layout perfect for corporate roles',
-      component: ProfessionalTemplate 
+      id: 'tech', 
+      name: 'Tech Portfolio', 
+      description: 'Developer-focused design with terminal vibes and code aesthetics',
+      component: TechPortfolioTemplate 
     },
     { 
       id: 'creative', 
-      name: 'Creative', 
-      description: 'Vibrant and colorful design for creative professionals',
-      component: CreativeTemplate 
+      name: 'Creative Showcase', 
+      description: 'Bold and vibrant design perfect for creative professionals',
+      component: CreativeShowcaseTemplate 
+    },
+    { 
+      id: 'professional', 
+      name: 'Modern Professional', 
+      description: 'Clean corporate style for business and enterprise roles',
+      component: ModernProfessionalTemplate 
     }
   ], []);
 
