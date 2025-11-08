@@ -469,7 +469,7 @@ const TemplatesGallery = () => {
             {/* Modal Content */}
             <div className="flex-1 overflow-auto custom-scrollbar p-8">
               <div className="max-w-4xl mx-auto bg-white dark:bg-slate-800 rounded-lg shadow-2xl p-12">
-                {React.createElement(fullscreenTemplate.component, { data: sampleData })}
+                {React.createElement(fullscreenTemplate.component, { data: sampleData, theme: 'light' })}
               </div>
             </div>
           </div>
