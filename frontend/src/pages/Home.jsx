@@ -10,24 +10,24 @@ const Home = () => {
 
   const features = [
     {
+      icon: Sparkles,
+      title: 'Multiple Stunning Templates',
+      description: 'Choose from Tech Portfolio, Creative Showcase, or Modern Professional designs that make you stand out.'
+    },
+    {
       icon: FileText,
-      title: 'Easy Form Builder',
-      description: 'Fill out simple forms to add your personal info, experience, education, skills, and projects.'
+      title: 'Portfolio-Focused Sections',
+      description: 'Showcase your best work with dedicated sections for projects (with image galleries), skills, experience, and more.'
     },
     {
       icon: Sparkles,
-      title: 'Live Preview',
-      description: 'See your portfolio come to life in real-time as you edit. What you see is what you get.'
+      title: 'Live Preview & Themes',
+      description: 'See changes instantly with real-time preview. Switch between Light, Dark, and Creative themes effortlessly.'
     },
     {
       icon: Download,
-      title: 'Export as PDF',
-      description: 'Download your professional portfolio as a polished PDF ready to share with employers.'
-    },
-    {
-      icon: Save,
-      title: 'Save & Resume',
-      description: 'Your work is automatically saved. Come back anytime to update your portfolio.'
+      title: 'Export & Share',
+      description: 'Download your portfolio as PDF or share it online. Auto-save keeps your work safe.'
     }
   ];
 
