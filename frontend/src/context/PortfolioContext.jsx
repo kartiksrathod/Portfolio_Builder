@@ -247,15 +247,20 @@ export const PortfolioProvider = ({ children }) => {
   const value = {
     portfolioData,
     selectedTemplate,
+    portfolioTheme,
     currentStep,
+    isFullPreview,
     setSelectedTemplate,
+    setPortfolioTheme,
     setCurrentStep,
+    setIsFullPreview,
     updateField,
     updateArrayItem,
     addArrayItem,
     removeArrayItem,
     savePortfolio,
-    resetPortfolio
+    resetPortfolio,
+    setPortfolioData
   };
 
   return (
