@@ -11,75 +11,152 @@ import ModernProfessionalTemplate from '../components/templates/ModernProfession
 import { toast } from '../hooks/use-toast';
 import { exportToPDF } from '../utils/exportPDF';
 
-// Sample data for template preview
+// Sample data for template preview - matching new template structure
 const sampleData = {
-  personalInfo: {
-    fullName: 'John Doe',
-    title: 'Full Stack Developer',
-    email: 'john.doe@example.com',
+  hero: {
+    fullName: 'Alex Johnson',
+    tagline: 'Full Stack Developer & UI/UX Enthusiast',
+    shortBio: 'Passionate developer with 5+ years of experience building scalable web applications. I love creating elegant solutions to complex problems.',
+    email: 'alex.johnson@example.com',
     phone: '+1 (555) 123-4567',
     location: 'San Francisco, CA',
-    bio: 'Passionate developer with 5+ years of experience building scalable web applications. I love creating elegant solutions to complex problems.',
-    avatar: ''
+    photo: ''
   },
-  experience: [
+  about: {
+    headline: 'About Me',
+    story: 'I\'m a full-stack developer who loves turning complex problems into simple, beautiful solutions. With over 5 years of experience in web development, I\'ve worked on everything from small startups to enterprise applications. My passion lies in creating intuitive user experiences backed by robust, scalable architectures.',
+    strengths: [
+      {
+        id: '1',
+        title: 'Problem Solver',
+        description: 'Breaking down complex challenges into manageable solutions'
+      },
+      {
+        id: '2',
+        title: 'Team Player',
+        description: 'Collaborative approach to building great products'
+      },
+      {
+        id: '3',
+        title: 'Fast Learner',
+        description: 'Quickly adapting to new technologies and frameworks'
+      }
+    ]
+  },
+  skills: [
+    { id: '1', name: 'React', proficiency: 90, category: 'Frontend' },
+    { id: '2', name: 'Node.js', proficiency: 85, category: 'Backend' },
+    { id: '3', name: 'TypeScript', proficiency: 88, category: 'Language' },
+    { id: '4', name: 'Python', proficiency: 80, category: 'Backend' },
+    { id: '5', name: 'MongoDB', proficiency: 75, category: 'Database' },
+    { id: '6', name: 'AWS', proficiency: 70, category: 'Cloud' },
+    { id: '7', name: 'Docker', proficiency: 75, category: 'DevOps' },
+    { id: '8', name: 'GraphQL', proficiency: 72, category: 'API' }
+  ],
+  projects: [
     {
       id: '1',
-      jobTitle: 'Senior Developer',
-      company: 'Tech Corp',
-      startDate: '2021',
-      endDate: 'Present',
-      description: 'Led development of core platform features, mentored junior developers, and improved system performance by 40%.'
+      title: 'E-Commerce Platform',
+      description: 'Built a full-featured e-commerce platform with payment integration, inventory management, and admin dashboard. Scaled to handle 100K+ daily active users.',
+      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redis'],
+      images: [],
+      githubLink: 'https://github.com/alexjohnson/ecommerce',
+      liveLink: 'https://demo-ecommerce.example.com',
+      featured: true
     },
     {
       id: '2',
-      jobTitle: 'Full Stack Developer',
+      title: 'Task Management SaaS',
+      description: 'Developed a collaborative task management tool with real-time updates, team features, and advanced analytics dashboard.',
+      technologies: ['React', 'Firebase', 'Tailwind CSS', 'WebSockets'],
+      images: [],
+      githubLink: 'https://github.com/alexjohnson/taskapp',
+      liveLink: 'https://taskflow.example.com',
+      featured: true
+    },
+    {
+      id: '3',
+      title: 'AI Content Generator',
+      description: 'Created an AI-powered content generation tool using GPT-4 API. Helps marketers create engaging content 10x faster.',
+      technologies: ['Next.js', 'OpenAI API', 'PostgreSQL', 'Prisma'],
+      images: [],
+      githubLink: 'https://github.com/alexjohnson/ai-content',
+      liveLink: '',
+      featured: false
+    }
+  ],
+  experience: [
+    {
+      id: '1',
+      position: 'Senior Full Stack Developer',
+      company: 'Tech Innovations Inc.',
+      location: 'San Francisco, CA',
+      startDate: '2021-03',
+      endDate: 'Present',
+      current: true,
+      description: 'Lead development of core platform features, mentor junior developers, and architect scalable microservices. Improved system performance by 40% and reduced deployment time by 60%.',
+      responsibilities: [
+        'Led team of 5 developers in building cloud-native applications',
+        'Implemented CI/CD pipelines reducing deployment time by 60%',
+        'Architected microservices handling 1M+ requests daily'
+      ]
+    },
+    {
+      id: '2',
+      position: 'Full Stack Developer',
       company: 'StartupXYZ',
-      startDate: '2019',
-      endDate: '2021',
-      description: 'Built responsive web applications using React and Node.js. Collaborated with designers and product managers.'
+      location: 'Remote',
+      startDate: '2019-06',
+      endDate: '2021-02',
+      current: false,
+      description: 'Built responsive web applications using React and Node.js. Collaborated with designers and product managers to deliver user-centric features.',
+      responsibilities: [
+        'Developed 20+ customer-facing features',
+        'Integrated payment systems (Stripe, PayPal)',
+        'Optimized database queries improving load times by 50%'
+      ]
     }
   ],
   education: [
     {
       id: '1',
       degree: 'Bachelor of Science in Computer Science',
-      school: 'University of Technology',
-      year: '2019',
-      description: 'Graduated with honors. Specialized in software engineering and algorithms.'
+      institution: 'University of Technology',
+      location: 'California',
+      startDate: '2015',
+      endDate: '2019',
+      gpa: '3.8/4.0',
+      description: 'Graduated with honors. Specialized in software engineering, algorithms, and distributed systems. Dean\'s List all semesters.'
     }
   ],
-  skills: [
-    { id: '1', name: 'React', level: 90 },
-    { id: '2', name: 'Node.js', level: 85 },
-    { id: '3', name: 'TypeScript', level: 80 },
-    { id: '4', name: 'Python', level: 75 },
-    { id: '5', name: 'MongoDB', level: 70 },
-    { id: '6', name: 'AWS', level: 65 }
-  ],
-  projects: [
+  certifications: [
     {
       id: '1',
-      title: 'E-Commerce Platform',
-      description: 'Built a full-featured e-commerce platform with payment integration, inventory management, and admin dashboard.',
-      technologies: 'React, Node.js, MongoDB, Stripe',
-      githubLink: 'https://github.com/johndoe/ecommerce',
-      liveLink: 'https://demo.example.com'
+      name: 'AWS Certified Solutions Architect',
+      issuer: 'Amazon Web Services',
+      date: '2023-05',
+      credentialId: 'AWS-CSA-2023-12345',
+      url: 'https://aws.amazon.com/certification/',
+      description: 'Professional certification demonstrating expertise in designing distributed systems on AWS.'
     },
     {
       id: '2',
-      title: 'Task Management App',
-      description: 'Developed a collaborative task management tool with real-time updates and team features.',
-      technologies: 'React, Firebase, Tailwind CSS',
-      githubLink: 'https://github.com/johndoe/taskapp',
-      liveLink: ''
+      name: 'Google Cloud Professional Developer',
+      issuer: 'Google Cloud',
+      date: '2022-11',
+      credentialId: 'GCP-DEV-2022-67890',
+      url: 'https://cloud.google.com/certification',
+      description: 'Certification in cloud-native application development and deployment on GCP.'
     }
   ],
   contact: {
-    github: 'https://github.com/johndoe',
-    linkedin: 'https://linkedin.com/in/johndoe',
-    twitter: 'https://twitter.com/johndoe',
-    website: 'https://johndoe.dev'
+    email: 'alex.johnson@example.com',
+    phone: '+1 (555) 123-4567',
+    location: 'San Francisco, CA',
+    github: 'https://github.com/alexjohnson',
+    linkedin: 'https://linkedin.com/in/alexjohnson',
+    twitter: 'https://twitter.com/alexjohnson',
+    website: 'https://alexjohnson.dev'
   }
 };
 
